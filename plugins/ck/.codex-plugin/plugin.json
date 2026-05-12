@@ -1,0 +1,41 @@
+{
+  "name": "ck",
+  "version": "4.0.0",
+  "description": "Cavekit 4 — compressed spec-driven development for Codex. Three workflows over one SPEC.md file: spec, build, and check.",
+  "author": {
+    "name": "Julius Brussee",
+    "url": "https://github.com/JuliusBrussee"
+  },
+  "homepage": "https://github.com/ryanshepps/cavekit",
+  "repository": "https://github.com/ryanshepps/cavekit",
+  "license": "MIT",
+  "keywords": [
+    "spec-driven",
+    "caveman",
+    "cavekit",
+    "backprop",
+    "sdd"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cavekit",
+    "shortDescription": "Compressed spec-driven development for Codex.",
+    "longDescription": "Cavekit 4 keeps work anchored in one durable SPEC.md file. Use spec to create or amend the spec, build to execute tasks against it, and check to report drift. Caveman encoding keeps spec context compact; backprop records bugs as reusable invariants.",
+    "developerName": "Julius Brussee",
+    "category": "Coding",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/ryanshepps/cavekit",
+    "privacyPolicyURL": "https://github.com/ryanshepps/cavekit/blob/main/SECURITY.md",
+    "termsOfServiceURL": "https://github.com/ryanshepps/cavekit/blob/main/LICENSE",
+    "defaultPrompt": [
+      "Use Cavekit spec to write a SPEC.md for this idea.",
+      "Use Cavekit build to implement the next SPEC.md task.",
+      "Use Cavekit check to audit drift between SPEC.md and the code."
+    ],
+    "brandColor": "#6B7280",
+    "screenshots": []
+  }
+}

@@ -1,0 +1,39 @@
+name: Sync Codex plugin
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - FORMAT.md
+      - skills/**/SKILL.md
+      - scripts/sync-codex-plugin.py
+
+concurrency:
+  group: sync-codex-plugin
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Pull latest before making changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      - name: Sync Codex plugin copies
+        run: python3 scripts/sync-codex-plugin.py
+
+      - name: Commit and push if changed
+        run: |
+          git add plugins/ck/skills plugins/ck/FORMAT.md
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: sync Codex plugin copies [skip ci]"
+          git push

@@ -1,0 +1,20 @@
+{
+  "name": "cavekit",
+  "interface": {
+    "displayName": "Cavekit"
+  },
+  "plugins": [
+    {
+      "name": "ck",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ck"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    }
+  ]
+}

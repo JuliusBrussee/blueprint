@@ -1,7 +1,7 @@
 <h1 align="center">cavekit</h1>
 
 <p align="center">
-  <strong>compressed spec-driven development for claude code</strong><br/>
+  <strong>compressed spec-driven development for claude code and codex</strong><br/>
   <sub>one file · three commands · zero sub-agents</sub>
 </p>
 
@@ -34,10 +34,12 @@ That's the whole pitch.
 
 ## install
 
+### Claude Code
+
 One line, via the `skills` CLI:
 
 ```bash
-npx skills add JuliusBrussee/cavekit
+npx skills add ryanshepps/cavekit
 ```
 
 Installs five skills into `~/.claude/skills/`: `spec`, `build`, `check`
@@ -50,15 +52,40 @@ Or via the Claude Code marketplace (also adds `/ck:spec`, `/ck:build`,
 `/ck:check` slash commands):
 
 ```bash
-/plugin marketplace add juliusbrussee/cavekit
+/plugin marketplace add ryanshepps/cavekit
 /plugin install ck@cavekit
 ```
 
 Or clone directly:
 
 ```bash
-git clone https://github.com/juliusbrussee/cavekit.git ~/.claude/plugins/cavekit
+git clone https://github.com/ryanshepps/cavekit.git ~/.claude/plugins/cavekit
 ```
+
+The Claude Code interface stays the same: `/ck:spec`, `/ck:build`,
+`/ck:check`.
+
+### Codex
+
+This fork also ships a Codex plugin package at `plugins/ck/` and marketplace
+metadata at `.agents/plugins/marketplace.json`, following the same dual-plugin
+layout as `JuliusBrussee/caveman`.
+
+Add the repository as a Codex plugin marketplace source:
+
+```bash
+github:ryanshepps/cavekit
+```
+
+The Codex plugin exposes the same workflows as skills:
+
+| prompt | workflow |
+|---|---|
+| `/ck:spec` or `use Cavekit spec` | create / amend / backprop `SPEC.md` |
+| `/ck:build` or `use Cavekit build` | implement against `SPEC.md` |
+| `/ck:check` or `use Cavekit check` | read-only drift report |
+| `use Cavekit caveman` | compact Cavekit spec encoding |
+| `use Cavekit backprop` | bug → spec protocol |
 
 ## format
 
@@ -75,6 +102,10 @@ skills/build          plan-execute skill (mirrors commands/build.md)
 skills/check          drift report skill (mirrors commands/check.md)
 skills/caveman        encoding utility
 skills/backprop       bug → spec protocol (six steps)
+plugins/ck            Codex plugin package (synced from root sources)
+.agents/plugins       Codex marketplace metadata
+scripts/              sync helper for Codex plugin copies
+tests/                local repo verification
 ```
 
 ## non-goals
