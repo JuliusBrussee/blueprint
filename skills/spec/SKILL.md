@@ -72,7 +72,10 @@ Never silently rewrite sections user did not name.
 
 - Caveman format per `FORMAT.md`.
 - Preserve identifiers, paths, code verbatim.
-- Numbering monotonic — never reuse §V.N or §B.N.
+- Numbering monotonic — never reuse §V.N, §B.N, or §T.N.
+- Next ID = max(current table IDs + archive comment ranges) + 1.
+  Parse `<!-- archive: ... §T T1-T12 -->` to find archived ranges.
+  Never start from T1/B1 if archive comments exist.
 - §T row `cites` column ! list §V/§I deps: `T5|.|impl auth mw|V2,I.api`.
 
 ## NON-GOALS

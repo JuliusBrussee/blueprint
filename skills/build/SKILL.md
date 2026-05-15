@@ -18,7 +18,8 @@ Single-thread native plan→execute. You are main Claude. No swarm.
 
 1. Read `SPEC.md`. If missing → tell user to invoke the spec skill first. Stop.
 2. Read `FORMAT.md` once if not loaded.
-3. Parse invocation args:
+3. Check `.cavekit/archive/` — if task cites an invariant that archive comments link to archived §T rows, read relevant archive file for context on how that invariant was previously implemented.
+4. Parse invocation args:
    - `§T.n` → that task only
    - `--next` → lowest-numbered row with status `.` or `~`
    - `--all` or empty → every `.` row in §T order
