@@ -22,15 +22,17 @@ When SPEC.md > 500 lines. Full copy to archive. Trim working copy.
 Analyze SPEC.md. Identify what would be archived. Show preview. No files touched.
 
 Steps:
+
 1. Count total lines → `lines before`.
 2. §T: count rows with status `x`. List their IDs. Count their lines.
-3. §B: count rows with date > 90 days old. List their IDs. Count their lines.
+3. §B: count rows with age ≥ 90 days (date < today-90d). List their IDs. Count their lines.
 4. §V: collect `cites` from active §T (`.` or `~`). Find V<n> not in live set. List them. Count their lines.
 5. §I: same logic as §V. List unreferenced I items. Count their lines.
 6. §C: same logic. Count their lines.
 7. `lines after` = `lines before` - (§T lines + §B lines + §V lines + §I lines + §C lines) + (archive comment lines: 1 per trimmed section). Exact count.
 
 Show preview:
+
 ```
 ## archive preview
 
@@ -74,7 +76,7 @@ In working SPEC.md only. Archive untouched.
 
 ### §B — old bugs
 
-1. Find all rows where date column > 90 days old.
+1. Find all rows where age ≥ 90 days (date < today-90d).
 2. Record id range (e.g. `B1-B5`).
 3. Remove those rows from table.
 4. Insert HTML comment above §B table header:
@@ -132,7 +134,8 @@ saved to: .cavekit/archive/SPEC-2026-05-15.md
 §B archived: B1-B4 (4 bugs older than 90 days)
 §V archived: V1,V3-V5 (4 invariants, no active task cites them)
 §I archived: I.cli (1 interface, no active task cites it)
-§G §C untouched
+§C archived: 2 constraints, no active task cites them
+§G untouched
 
 lines before: 542
 lines after: 218

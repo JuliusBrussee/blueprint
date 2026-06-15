@@ -21,7 +21,7 @@ Pure diagnostic. Reports violations. Writes nothing. User decides remedy.
    - `§V` → check invariants only (default)
    - `§I` → check interfaces
    - `§T` → audit task status vs code
-   - `--all` → all three
+   - `--all` → all three (§V + §I + §T), AND includes archived §T rows (read from `.cavekit/archive/`)
 
 ## CHECK §V — invariants
 
@@ -78,6 +78,7 @@ next: spec skill with `bug:` or fix code at cited lines.
 ## REMEDY HINTS (not actions)
 
 End report with one-line hint per class:
+
 - VIOLATE / DRIFT → invoke spec skill `bug: <V.n>` or fix code.
 - MISSING → invoke build skill on `§T.n` if task exists; else spec skill `amend §T`.
 - STALE → spec skill `amend §T` to uncheck.

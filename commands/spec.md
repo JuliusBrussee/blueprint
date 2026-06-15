@@ -65,9 +65,9 @@ Never silently rewrite sections user did not name.
 - Caveman format per `FORMAT.md`.
 - Preserve identifiers, paths, code verbatim.
 - Numbering monotonic — never reuse §V.N, §B.N, or §T.N.
-- Next ID = max(current table IDs + archive comment ranges) + 1.
-  Parse `<!-- archive: ... §T T1-T12 -->` to find archived ranges.
-  Never start from T1/B1 if archive comments exist.
+- Next IDs computed per section: nextT = 1 + max(current T ids, archived §T ids); nextB = 1 + max(current B ids, archived §B ids); nextV = 1 + max(current V ids, archived §V ids).
+  Parse archive comments like `<!-- archive: ... §T T1-T12 -->`, `<!-- archive: ... §B B1-B5 -->`, `<!-- archive: ... §V V1,V3-V5 -->` (comma lists + `Xn-Xm` ranges).
+  Never restart from T1/B1/V1 if any archive comment exists for that section.
 - §T row `cites` column ! list §V/§I deps: `T5|.|impl auth mw|V2,I.api`.
 
 ## NON-GOALS

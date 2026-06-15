@@ -110,7 +110,7 @@ If SPEC.md > 500 lines, invoke `/archive`. Never split into multiple specs.
 
 When SPEC.md > 500 lines, `/archive` skill handles it:
 
-1. Copy **full** SPEC.md → `.cavekit/archive/SPEC-<date>.md`
+1. Copy **full** SPEC.md → `.cavekit/archive/SPEC-<date>.md`. If `SPEC-<date>.md` already exists → append `-2`, `-3`, etc.
 2. In working SPEC.md:
    - §T: remove rows with status `x`. Add comment above table: `<!-- archive: .cavekit/archive/SPEC-<date>.md §T T1-T12 -->`
    - §B: remove rows older than 90 days. Add comment above table: `<!-- archive: .cavekit/archive/SPEC-<date>.md §B B1-B5 -->`
@@ -133,7 +133,7 @@ Archive comments carry the range for ID lookup. New tasks may cite archived V/N 
 | `/spec new` | creates | all |
 | `/spec amend` | edits | chosen |
 | `/spec bug` | appends | §B + §V |
-| `/archive` | archives + trims | §T done, §B old |
+| `/archive` | archives + trims | §T done, §B old, §V/§I/§C unreferenced |
 | `/build` | flips | §T status cell `.` → `~` → `x` |
 | `/check` | — | read only |
 

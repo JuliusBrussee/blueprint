@@ -18,7 +18,7 @@ Single-thread native plan→execute. You are main Claude. No swarm.
 
 1. Read `SPEC.md`. If missing → tell user to invoke the spec skill first. Stop.
 2. Read `FORMAT.md` once if not loaded.
-3. Check `.cavekit/archive/` — if task cites an invariant that archive comments link to archived §T rows, read relevant archive file for context on how that invariant was previously implemented.
+3. Check `.cavekit/archive/` — if a task cites an invariant/interface that has been archived (per `<!-- archive: ... §V ... -->` / `§I` comments), read the referenced archive file for the full text/context.
 4. Parse invocation args:
    - `§T.n` → that task only
    - `--next` → lowest-numbered row with status `.` or `~`
@@ -66,6 +66,7 @@ Rule: never silently fix root-cause without considering backprop. §B is the mem
 ## VERIFICATION
 
 Task `x` only if:
+
 - Verification command exits 0.
 - New test(s) added per plan.
 - No §V invariant regressed (run full test suite at end).
