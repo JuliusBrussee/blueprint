@@ -30,6 +30,7 @@ Inspect user request and project state:
 Input: user idea.
 
 Steps:
+
 1. Extract goal (1 line, caveman). → §G.
 2. List constraints user stated or implied. → §C.
 3. List external surfaces user named. → §I.
@@ -50,6 +51,7 @@ Caveman everywhere. Flag uncertain items with `?` in text so user can confirm.
 Input: `bug: <description>`.
 
 Steps:
+
 1. Parse bug description.
 2. Find root cause (read relevant code).
 3. Decide: would a new invariant catch recurrence? If yes → draft `V<next>`.
@@ -72,7 +74,10 @@ Never silently rewrite sections user did not name.
 
 - Caveman format per `FORMAT.md`.
 - Preserve identifiers, paths, code verbatim.
-- Numbering monotonic — never reuse §V.N or §B.N.
+- Numbering monotonic — never reuse §V.N, §B.N, or §T.N.
+- Next IDs computed per section: nextT = 1 + max(current T ids, archived §T ids); nextB = 1 + max(current B ids, archived §B ids); nextV = 1 + max(current V ids, archived §V ids).
+  Parse archive comments like `<!-- archive: ... §T T1-T12 -->`, `<!-- archive: ... §B B1-B5 -->`, `<!-- archive: ... §V V1,V3-V5 -->` (comma lists + `Xn-Xm` ranges).
+  Never restart from T1/B1/V1 if any archive comment exists for that section.
 - §T row `cites` column ! list §V/§I deps: `T5|.|impl auth mw|V2,I.api`.
 
 ## NON-GOALS

@@ -16,15 +16,16 @@ Pure diagnostic. Reports violations. Writes nothing. User decides remedy.
 ## LOAD
 
 1. Read `SPEC.md`. If missing → "no spec, nothing to check." Stop.
-2. Parse invocation args:
+2. Check `.cavekit/archive/` dir. List archive files if present. Available for historical lookup.
+3. Parse invocation args:
    - `§V` → check invariants only (default)
    - `§I` → check interfaces
    - `§T` → audit task status vs code
-   - `--all` → all three
+   - `--all` → all three (§V + §I + §T), AND includes archived §T rows (read from `.cavekit/archive/`)
 
 ## CHECK §V — invariants
 
-For each V<n>:
+For each V<n>, also check if archived §T rows cited this invariant (read relevant `.cavekit/archive/SPEC-<date>.md` if archive comments reference matching §T ranges).
 
 1. Translate invariant into verifiable claim about code.
 2. Grep / read relevant files.
@@ -43,6 +44,8 @@ For each I item:
    - **EXTRA** — code exposes surface not in §I.
 
 ## CHECK §T — tasks
+
+For each T<n> in working SPEC.md. Archived tasks checked only if user passes `--all` — read from `.cavekit/archive/`.
 
 For each T<n>:
 
@@ -75,6 +78,7 @@ next: spec skill with `bug:` or fix code at cited lines.
 ## REMEDY HINTS (not actions)
 
 End report with one-line hint per class:
+
 - VIOLATE / DRIFT → invoke spec skill `bug: <V.n>` or fix code.
 - MISSING → invoke build skill on `§T.n` if task exists; else spec skill `amend §T`.
 - STALE → spec skill `amend §T` to uncheck.

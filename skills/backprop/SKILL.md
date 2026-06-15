@@ -25,6 +25,7 @@ That edit is backprop.
 ### 1. TRACE
 Read failure output / bug report.
 Find exact file:line of wrong behavior.
+Check `.cavekit/archive/` for similar past bugs — same invariant or same file pattern may have been fixed before.
 Name root cause in one caveman sentence.
 
 ### 2. ANALYZE
