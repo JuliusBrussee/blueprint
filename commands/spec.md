@@ -1,6 +1,6 @@
 ---
 description: Create, amend, or backprop bug into SPEC.md. Sole mutator of spec.
-argument-hint: [bug: <description> | amend <§X.n> | from-code | <idea>]
+argument-hint: "[bug: <description> | amend <§X.n> | from-code | <idea>]"
 ---
 
 Invoke the **spec** skill (`skills/spec/SKILL.md`). Treat `$ARGUMENTS` as the mode:

@@ -1,6 +1,6 @@
 ---
 description: Plan-then-execute against SPEC.md. Native Claude Code loop, no sub-agents.
-argument-hint: [§T.n | --all | --next]
+argument-hint: "[§T.n | --all | --next]"
 ---
 
 Invoke the **build** skill (`skills/build/SKILL.md`). Treat `$ARGUMENTS` as the

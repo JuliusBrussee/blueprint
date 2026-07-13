@@ -1,6 +1,6 @@
 ---
 description: Adversarial senior review of the spec before build. Refute, don't rubber-stamp. Ends in a go/no-go gate.
-argument-hint: [§T.n | --all]
+argument-hint: "[§T.n | --all]"
 ---
 
 Invoke the **review** skill (`skills/review/SKILL.md`). Construct a senior
